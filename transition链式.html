@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+*{padding:0; margin:0;}
+#box{height:200px; width:200px; background:red;}
+</style>
+<script>
+window.onload=function(){
+	var oBox=document.getElementById('box');
+	oBox.onclick=function(){
+		move(this,{height:'400px',width:'400px'},{time:1000,type:'ease-out',end:function(){
+			move(oBox,{background:'blue'})
+		}})
+	};
+	function move(obj,json,options){
+		options=options||{};
+		options.type=options.type||'ease-in';
+		options.time=options.time||700;
+		obj.style.transition=options.time+'ms all '+options.type;
+		for(var name in json){
+			obj.style[name]=json[name];
+		}
+		function fn1(){
+			obj.removeEventListener('transitionend',fn1,false);
+				
+			options.end&&options.end();
+		}
+		obj.addEventListener('transitionend',fn1,false)
+	}
+};
+</script>
+</head>
+
+<body>
+<div id="box"></div>
+</body>
+</html>
