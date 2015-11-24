@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+#box{height:200px; width:200px; background:#ccc; margin:200px auto; -webkit-transform:rotate(0deg);}
+</style>
+<script>
+window.onload=function(){
+	var oBox=document.body.children[0];
+	oBox.onclick=function(){
+		oBox.style.WebkitTransform='rotate(20deg)';
+	};
+};
+</script>
+</head>
+
+<body>
+<div id="box"></div>
+</body>
+</html>

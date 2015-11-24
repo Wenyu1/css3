@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+*{padding:0; margin:0;}
+.box{background:url(1.jpg) no-repeat; width:700px; height:400px; margin:100px auto; position:relative; top:0; left:0;}
+.page{height:400px; width:350px; background:#ccc; position:absolute; top:0; left:50%; -webkit-transform-style:preserve-3d; -webkit-transform:perspective(800px) rotate(0deg); -webkit-transition:1s all ease; -webkit-transform-origin:left center; z-index:3;}
+.page .front{height:400px; width:350px; position:absolute; top:0; left:0; background:url(1.jpg) -350px 0; -webkit-transform:translateZ(1px);}
+/page .back{height:400px; width:350px; position:absolute; top:0; left:0; background:url(2.jpg) no-repeat; -webkit-transform:translateZ(-1px) scale(-1,1);}
+.box shadow{height:400px; width:350px; position:absolute; top:0; left:50%; background:#000; opacity:0.75; z-index:2; -webkit-transition:1s all ease;}
+.box bottmo{height:400px; width:350px; position:absolute; top:0; left:50%; background:url(2.jpg) no-repeat -350px 0; z-index:1;}
+.page:active{-webkit-transform:}
+</style>
+</head>
+
+<body>
+<div class="box"><!--1.jpg-->
+	<div class="page">
+    	<div class="front"></div><!--1.jpg r-->
+        <div class="back"></div><!--2.jpg l-->
+    </div>
+    <div class="shadow"></div>
+    <div class="bottom"></div><!--2.jpg r-->
+</div>
+</body>
+</html>

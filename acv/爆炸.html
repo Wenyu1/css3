@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+*{padding:0; margin:0;}
+.box{width:700px; height:400px; background:url(2.jpg) no-repeat; margin:100px auto; position:relative; top:0; left:0;}
+.box span{position:absolute; background:url(1.jpg) no-repeat; opacity:1;}
+</style>
+<script>
+window.onload=function(){
+	var oBtn=document.getElementById('boom');
+	var oBox=document.querySelector('.box');
+	var aS=oBox.children;
+	var R=4;
+	var C=7;
+	for(var i=0;i<R;i++){
+		for(var j=0;j<C;j++){
+			var oS=document.createElement('span');
+			oS.style.width=oBox.offsetWidth/C+'px';
+			oS.style.height=oBox.offsetHeight/R+'px';
+			oBox.appendChild(oS);
+			oS.style.left=oS.offsetWidth*j+'px';
+			oS.style.top=oS.offsetHeight*i+'px';
+			oS.style.backgroundPosition=-oS.offsetLeft+'px -'+oS.offsetTop+'px';
+		}
+	}
+	oBtn.onclick=function(){
+		for(var i=0;i<aS.length;i++){
+			aS[i].style.webkitTransition='1s all ease';
+			var cX=aS[i].offsetLeft+aS[i].offsetWidth/2;
+			var cY=aS[i].offsetTop+aS[i].offsetHeight/2;
+			var divX = oBox.offsetWidth/2;
+			var divY = oBox.offsetHeight/2;
+			//每个span距离div的距离
+			var disX = (cX-divX)*Math.random();
+			var disY = (cY-divY)*Math.random();
+			
+			aS[i].style.WebkitTransform='perspective(800px) translateX('+disX+'px) translateY('+disY+'px) rotateX('+(Math.random()*360+180)+'deg) rotateY('+(Math.random()*360+180)+'deg)';
+			aS[i].style.opacity=0;
+		}
+	};
+};
+</script>
+</head>
+
+<body>
+<input type="button" value="爆炸" id="boom" />
+<div class="box"></div>
+
+</body>
+</html>

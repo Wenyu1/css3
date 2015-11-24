@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+*{padding:0; margin:0; list-style:none;}
+ul{height:200px; width:133px; position:relative; -webkit-transform-style:preserve-3d; -webkit-transform:perspective(800px) rotateY(0deg) rotateX(-15deg); margin:100px auto; -webkit-transition:4s all ease;}
+
+ul:active{-webkit-transform:perspective(800px) rotateY(360deg) rotateX(-15deg);}
+ul li{height:100%; width:100%; position:absolute; top:0; left:0; -webkit-transition:1s all ease;}
+</style>
+<script>
+window.onload=function(){
+	var oUl=document.getElementById('ul');
+	var aLi=document.getElementsByTagName('li');
+	var i=aLi.length-1;
+	var timer=setInterval(function(){
+		aLi[i].style.webkitTransform='rotateY('+i*360/aLi.length+'deg) translateZ(305px)';
+		i--;
+		if(i<0){
+			clearInterval(timer);
+		}
+	},100);
+};
+</script>
+</head>
+
+<body>
+<ul id="ul">
+	<li><img src="img/1.jpg" /></li>
+    <li><img src="img/2.jpg" /></li>
+    <li><img src="img/3.jpg" /></li>
+    <li><img src="img/4.jpg" /></li>
+    <li><img src="img/5.jpg" /></li>
+    <li><img src="img/6.jpg" /></li>
+    <li><img src="img/7.jpg" /></li>
+    <li><img src="img/8.jpg" /></li>
+    <li><img src="img/9.jpg" /></li>
+    <li><img src="img/10.jpg" /></li>
+    <li><img src="img/11.jpg" /></li>
+</ul>
+</body>
+</html>

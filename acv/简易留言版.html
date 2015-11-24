@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script>
+window.onload=function(){
+	var oTxt=document.body.children[0];
+	var oBtn=document.body.children[1];
+	var oUl=document.getElementById('ul1');
+	var aLi=oUl.children;
+	var aDel=oUl.getElementsByTagName('a');
+	for(var i=0;i<aDel.length;i++){
+		aDel[i].onclick=function(){
+			oUl.removeChild(this.parentNode);
+		};
+	}
+	oBtn.onclick=function(){
+		if(oTxt.value=='')return;
+		var oLi=document.createElement('li');
+		oLi.innerHTML=oTxt.value+'&nbsp<a href="javascript:;">删除</a>';
+		oUl.appendChild(oLi);
+		oTxt.value=''
+		var oA=oLi.children[0];
+			oA.onclick=function(){
+				oUl.removeChild(this.parentNode);
+			};
+		if(oUl.children.length){
+			oUl.insertBefore(oLi,oUl.children[0]);
+		}else{
+			oUl.appendChild(oLi);
+		}
+	};
+	
+};
+</script>
+</head>
+
+<body>
+<input type="text" id="txt1" />
+<input type="button" value="按钮" id="btn1" />
+<ul id="ul1">
+	<li>范本3&nbsp;<a href="javascript:;">删除</a></li>
+	<li>范本2&nbsp;<a href="javascript:;">删除</a></li>
+	<li>范本1&nbsp;<a href="javascript:;">删除</a></li>
+</ul>
+
+</body>
+</html>
